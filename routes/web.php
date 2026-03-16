@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventImageController;
 use App\Http\Controllers\SessionsUserController;
@@ -23,6 +24,10 @@ Route::middleware('auth')->group(function () {
         Route::patch('/steps/{step}', [StepController::class, 'update'])->name('admin.step.update');
         Route::delete('/admin/events/{event}', [EventController::class, 'destroy'])->name('admin.event.destroy');
         Route::delete('/admin/events/{event}/image', [EventImageController::class, 'destroy'])->name('admin.event.image.destroy');
+
+        Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+        Route::patch('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+        Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
     });
 });
 

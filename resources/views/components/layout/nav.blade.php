@@ -11,7 +11,8 @@
                 @auth
                     <div class="flex space-x-3 mx-auto items-center">
                         @can('admin')
-                            <a href="{{ route('admin.events.index') }}" class="btn btn-primary">Admin</a>
+                            <a href="{{ route('admin.events.index') }}" class="btn {{ request()->routeIs('admin.events.*') ? 'btn-primary' : 'btn-outlined' }}">Events</a>
+                            <a href="{{ route('admin.users.index') }}" class="btn {{ request()->routeIs('admin.users.*') ? 'btn-primary' : 'btn-outlined' }}">Users</a>
                         @endcan
                         <form action="/logout" method="post">
                             @csrf

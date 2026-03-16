@@ -16,7 +16,7 @@
                     <x-icons.external/>
                     Edit Event
                 </button>
-                <form action="{{ route('admin.event.destroy', $event) }}" method="post">
+                <form action="{{ route('admin.event.destroy', $event) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outlined text-red-500">

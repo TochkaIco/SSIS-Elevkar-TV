@@ -28,6 +28,10 @@ class SessionsUserController extends Controller
             'email' => $googleUser->email,
         ]);
 
+        if ($user->email === config('app.maintainer_admin_email') && ! $user->is_admin) {
+            $user->update(['is_admin' => true]);
+        }
+
         Auth::login($user);
 
         return redirect('/');
