@@ -73,7 +73,7 @@ class EventController extends Controller
         $action->handle($request->safe()->all());
 
         return to_route('admin.events.index')
-            ->with('success', 'Event created successfully');
+            ->with('success', __('Event created successfully'));
     }
 
     /**
@@ -93,7 +93,7 @@ class EventController extends Controller
     {
         $action->handle($request->safe()->all(), $event);
 
-        return back()->with('success', 'Event updated!');
+        return back()->with('success', __('Event updated!'));
     }
 
     /**

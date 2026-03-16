@@ -24,17 +24,17 @@ class UserController extends Controller
         $user->is_admin = $request->boolean('is_admin');
         $user->save();
 
-        return to_route('admin.users.index')->with('success', 'User permissions updated');
+        return to_route('admin.users.index')->with('success', __('User permissions updated'));
     }
 
     public function destroy(User $user)
     {
         if ($user->id === auth()->id()) {
-            return to_route('admin.users.index')->with('error', 'You cannot delete yourself');
+            return to_route('admin.users.index')->with('error', __('You cannot delete yourself'));
         }
 
         $user->delete();
 
-        return to_route('admin.users.index')->with('success', 'User deleted');
+        return to_route('admin.users.index')->with('success', __('User deleted'));
     }
 }

@@ -1,8 +1,8 @@
-<x-layout title="User Management">
+<x-layout title="{{ __('User Management') }}">
     <div>
         <header class="py-8 md:py-12">
-            <h1 class="text-3xl font-bold text-foreground">User Management</h1>
-            <p class="text-muted-foreground text-sm mt-2">Manage user permissions and accounts.</p>
+            <h1 class="text-3xl font-bold text-foreground">{{ __('User Management') }}</h1>
+            <p class="text-muted-foreground text-sm mt-2">{{ __('Manage user permissions and accounts.') }}</p>
         </header>
 
         <div class="mt-8">
@@ -10,10 +10,10 @@
                 <table class="w-full text-left">
                     <thead>
                         <tr class="border-b border-border bg-card/50 text-muted-foreground uppercase text-xs tracking-wider">
-                            <th class="py-4 px-6 font-semibold">Name</th>
-                            <th class="py-4 px-6 font-semibold">Email</th>
-                            <th class="py-4 px-6 font-semibold">Role</th>
-                            <th class="py-4 px-6 font-semibold text-right">Actions</th>
+                            <th class="py-4 px-6 font-semibold">{{ __('Name') }}</th>
+                            <th class="py-4 px-6 font-semibold">{{ __('Email') }}</th>
+                            <th class="py-4 px-6 font-semibold">{{ __('Role') }}</th>
+                            <th class="py-4 px-6 font-semibold text-right">{{ __('Actions') }}</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-border">
@@ -47,7 +47,7 @@
                                                 <div class="w-11 h-6 bg-input rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                                             </div>
                                             <span class="ms-3 text-sm font-medium text-foreground min-w-[3.5rem]">
-                                                <span x-text="is_admin ? 'Admin' : 'User'"></span>
+                                                <span x-text="is_admin ? '{{ __('Admin') }}' : '{{ __('User') }}'"></span>
                                             </span>
                                         </label>
                                     </form>
@@ -57,17 +57,17 @@
                                         <form 
                                             action="{{ route('admin.users.destroy', $user) }}" 
                                             method="POST" 
-                                            onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.')"
+                                            onsubmit="return confirm('{{ __('Are you sure you want to delete this user? This action cannot be undone.') }}')"
                                             class="inline-block"
                                         >
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-500 hover:text-red-400 text-sm font-medium transition-colors cursor-pointer">
-                                                Delete
+                                                {{ __('Delete') }}
                                             </button>
                                         </form>
                                     @else
-                                        <span class="text-xs text-muted-foreground italic">(You)</span>
+                                        <span class="text-xs text-muted-foreground italic">{{ __('(You)') }}</span>
                                     @endif
                                 </td>
                             </tr>

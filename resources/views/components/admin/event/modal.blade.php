@@ -1,6 +1,6 @@
 @props(['event' => new \App\Models\Event()])
 
-<x-modal name="{{ $event->exists ? 'edit-event' : 'create-event' }}" title="{{ $event->exists ? 'Edit Event' : 'Create Event' }}">
+<x-modal name="{{ $event->exists ? 'edit-event' : 'create-event' }}" title="{{ $event->exists ? __('Edit Event') : __('Create Event') }}">
     <form
         x-data="{
                     newLink: '',
@@ -20,28 +20,28 @@
 
         <div class="space-y-6">
             <x-form.field
-                label="Title"
+                label="{{ __('Title') }}"
                 name="title"
                 data-test="title-field"
-                placeholder="Enter a title for your event"
+                placeholder="{{ __('Enter a title for your event') }}"
                 autofocus
                 required
                 :value="$event->title"
             />
 
             <x-form.field
-                label="Description"
+                label="{{ __('Description') }}"
                 name="description"
                 type="textarea"
                 data-test="description-field"
-                placeholder="Describe your event..."
+                placeholder="{{ __('Describe your event...') }}"
                 required
                 :value="$event->description"
             />
 
             <div class="flex items-center justify-between">
                 <span>
-                    <label for="display_starts_at" class="label">Display starts at </label>
+                    <label for="display_starts_at" class="label">{{ __('Display starts at') }} </label>
                     <input
                         type="datetime-local"
                         name="display_starts_at"
@@ -51,7 +51,7 @@
                     <x-form.error name="display_starts_at" />
                 </span>
                 <span>
-                    <label for="display_ends_at" class="label">Display ends at </label>
+                    <label for="display_ends_at" class="label">{{ __('Display ends at') }} </label>
                     <input
                         type="datetime-local"
                         name="display_ends_at"
@@ -63,13 +63,13 @@
             </div>
 
             <div class="space-y-2">
-                <label for="image" class="label">Featured Image</label>
+                <label for="image" class="label">{{ __('Featured Image') }}</label>
 
                 @if($event->image_path)
                     <div class="space-y-2">
-                        <img src="{{ asset('storage/' . $event->image_path) }}" alt="Image"
+                        <img src="{{ asset('storage/' . $event->image_path) }}" alt="{{ __('Image') }}"
                              class="w-full h-auto max-h-60 object-cover mb-2 rounded-lg">
-                        <button class="btn btn-outlined h-10 w-full" form="delete-image-form">Remove Image</button>
+                        <button class="btn btn-outlined h-10 w-full" form="delete-image-form">{{ __('Remove Image') }}</button>
                     </div>
                 @endif
 
@@ -86,7 +86,7 @@
 
             <div>
                 <fieldset class="space-y-3">
-                    <legend class="label">Steps</legend>
+                    <legend class="label">{{ __('Steps') }}</legend>
 
                     <div class="flex gap-x-2 items-center">
                         <input
@@ -94,7 +94,7 @@
                             type="text"
                             id="new-step"
                             data-test="new-step-field"
-                            placeholder="What are the steps?"
+                            placeholder="{{ __('What are the steps?') }}"
                             class="input flex-1"
                         >
 
@@ -134,7 +134,7 @@
 
             <div>
                 <fieldset class="space-y-3">
-                    <legend class="label">Links</legend>
+                    <legend class="label">{{ __('Links') }}</legend>
 
                     <div class="flex gap-x-2 items-center">
                         <input
@@ -185,8 +185,8 @@
             </div>
 
             <div class="flex justify-end gap-x-5">
-                <button type="button" @click="$dispatch('close-modal')">Cancel</button>
-                <button type="submit" class="btn btn-primary" data-test="submit-button">{{ $event->exists ? 'Save' : 'Create' }}</button>
+                <button type="button" @click="$dispatch('close-modal')">{{ __('Cancel') }}</button>
+                <button type="submit" class="btn btn-primary" data-test="submit-button">{{ $event->exists ? __('Save') : __('Create') }}</button>
             </div>
         </div>
     </form>
