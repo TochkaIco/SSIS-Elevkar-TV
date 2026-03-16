@@ -10,6 +10,6 @@ The admin panel will let admins configure the layout, text and images on the ind
 - [x] fix styling
 - [x] figure out storage solutions
 - [x] implement the general logic
-- [ ] translate to Swedish
+- [x] translate to Swedish
 - [ ] done with browser/feature and unit tests
 - [ ] setup a pipeline
