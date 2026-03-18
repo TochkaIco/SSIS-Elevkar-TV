@@ -12,5 +12,16 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 ENV APACHE_HTTP_PORT=8080
 EXPOSE 8080
 WORKDIR /var/www/html
-COPY .agents /var/www/html/
-RUN mkdir /.config && chmod 777 /.config && chmod 777 /var/www/html/storage && chmod 777 /var/www/html/public/ && ls -la public && composer install --no-dev && npm install && npm run build && php artisan storage:link && chmod 755 /var/www/html/public/
+
+# Copy ALL application source, not just .agents
+COPY . /var/www/html/
+
+RUN mkdir -p /.config storage && \
+    chmod 777 /.config && \
+    chmod 777 /var/www/html/storage && \
+    chmod 777 /var/www/html/public/ && \
+    composer install --no-dev && \
+    npm install && \
+    npm run build && \
+    php artisan storage:link && \
+    chmod 755 /var/www/html/public/
