@@ -56,7 +56,6 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'public-url' => env('APP_PUBLIC_URL', 'https://elevkar.ssis.nu'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

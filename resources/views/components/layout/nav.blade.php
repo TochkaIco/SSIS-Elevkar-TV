@@ -27,7 +27,7 @@
                     </div>
                 @endguest
             @else
-                <p>{{ __('See more at') }} {{ config('app.public-url') }}</p>
+                <p>{{ __('See more at') }} {{ config('app.url') }}</p>
             @endif
         </div>
     </div>
