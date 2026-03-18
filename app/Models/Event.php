@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\EventStatus;
@@ -40,7 +42,7 @@ class Event extends Model
 
     protected function status(): Attribute
     {
-        return Attribute::get(function () {
+        return Attribute::get(function (): \App\EventStatus {
             $now = now();
 
             if ($this->display_starts_at > $now) {
