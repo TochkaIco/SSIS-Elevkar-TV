@@ -74,7 +74,7 @@
                 </div>
             @endif
 
-            @if($event->links->count())
+            @if($event->links && $event->links->count())
                 <div>
                     <h3 class="font-bold text-xl mt-6">{{ __('Links') }}</h3>
 
