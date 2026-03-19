@@ -1,12 +1,18 @@
 <x-layout title="{{ __('Event Show') }}">
     <div class="py-8 max-w-4xl mx-auto">
         <div class="flex justify-between items-center">
-            <a href="{{ route('admin.events.index') }}" class="flex items-center gap-x-2 text-sm font-medium">
-                <x-icons.arrow-back/>
-                {{ __('Back to Events') }}
-            </a>
+            @cannot('admin')
+                <a href="{{ route('events.index') }}" class="flex items-center gap-x-2 text-sm font-medium">
+                    <x-icons.arrow-back/>
+                    {{ __('Back to Events') }}
+                </a>
+            @endcannot
 
             @can('admin')
+                <a href="{{ route('admin.events.index') }}" class="flex items-center gap-x-2 text-sm font-medium">
+                    <x-icons.arrow-back/>
+                    {{ __('Back to Events') }}
+                </a>
                 <div class="flex gap-x-3 items-center">
                     <button
                         x-data
