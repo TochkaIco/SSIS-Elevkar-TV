@@ -6,24 +6,26 @@
                 {{ __('Back to Events') }}
             </a>
 
-            <div class="flex gap-x-3 items-center">
-                <button
-                    x-data
-                    class="btn btn-outlined"
-                    data-test="edit-event-button"
-                    @click="$dispatch('open-modal', 'edit-event')"
-                >
-                    <x-icons.external/>
-                    {{ __('Edit Event') }}
-                </button>
-                <form action="{{ route('admin.event.destroy', $event) }}" method="post" onsubmit="return confirm('{{ __('Are you sure you want to delete this event? This action cannot be undone.') }}')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-outlined text-red-500">
-                        {{ __('Delete') }}
+            @can('admin')
+                <div class="flex gap-x-3 items-center">
+                    <button
+                        x-data
+                        class="btn btn-outlined"
+                        data-test="edit-event-button"
+                        @click="$dispatch('open-modal', 'edit-event')"
+                    >
+                        <x-icons.external/>
+                        {{ __('Edit Event') }}
                     </button>
-                </form>
-            </div>
+                    <form action="{{ route('admin.event.destroy', $event) }}" method="post" onsubmit="return confirm('{{ __('Are you sure you want to delete this event? This action cannot be undone.') }}')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outlined text-red-500">
+                            {{ __('Delete') }}
+                        </button>
+                    </form>
+                </div>
+            @endcan
         </div>
 
         <div class="mt-6">
@@ -40,9 +42,11 @@
 
                 <div class="flex gap-x-3 items-center text-muted-foreground text-sm">
                     <span>{{ __('Created') }} {{ $event->created_at->diffForHumans() }}</span>
-                    @if($event->created_at != $event->updated_at)
-                        <span>{{ __('Updated') }} {{ $event->updated_at->diffForHumans() }}</span>
-                    @endif
+                    @can('admin')
+                        @if($event->created_at != $event->updated_at)
+                            <span>{{ __('Updated') }} {{ $event->updated_at->diffForHumans() }}</span>
+                        @endif
+                    @endcan
                 </div>
             </div>
 
