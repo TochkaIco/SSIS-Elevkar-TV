@@ -12,10 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $proxies = env('TRUST_PROXIES', '*');
+        $proxies = env('TRUSTED_PROXIES', '');
 
         $middleware->trustProxies(
-            at: $proxies === '*' ? '*' : explode(',', $proxies),
+            at:  explode(',', $proxies),
             headers: Request::HEADER_X_FORWARDED_FOR |
             Request::HEADER_X_FORWARDED_HOST |
             Request::HEADER_X_FORWARDED_PORT |
