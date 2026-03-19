@@ -69,7 +69,7 @@ Push latest:
         GIT_STRATEGY: none
     stage: push
     only:
-        - master
+        - main
     script:
         - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
         - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE:latest
