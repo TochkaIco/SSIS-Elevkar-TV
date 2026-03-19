@@ -1,6 +1,7 @@
 <?php
 
 test('the homepage is in Swedish', function () {
+    app()->setLocale('sv');
     $response = $this->get('/');
 
     $response->assertStatus(200);
@@ -8,6 +9,7 @@ test('the homepage is in Swedish', function () {
 });
 
 test('the login page is in Swedish', function () {
+    app()->setLocale('sv');
     $response = $this->get('/login');
 
     $response->assertStatus(200);
