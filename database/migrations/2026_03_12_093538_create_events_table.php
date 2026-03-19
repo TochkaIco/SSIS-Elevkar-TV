@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image_path')->nullable();
-            $table->json('links')->nullable();;
+            $table->json('links')->nullable();
             $table->timestamp('display_starts_at');
             $table->timestamp('display_ends_at');
             $table->timestamps();

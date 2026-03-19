@@ -1,7 +1,7 @@
 <x-layout title="{{ __('Events') }}">
     <div>
         <header class="py-8 md:py-12">
-            <h1 class="text-3xl font-bold">{{ __("Current Elevkår's Events") }}</h1>
+            <h1 class="text-3xl font-bold">{{ __("Current SSIS Events") }}</h1>
         </header>
         <div class="text-muted-foreground">
             <div class="grid md:grid-cols-2 gap-6">

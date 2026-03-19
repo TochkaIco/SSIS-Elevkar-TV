@@ -2,7 +2,7 @@
     <div>
         <header class="py-8 md:py-12">
             <h1 class="text-3xl font-bold">{{ __('Admin Panel') }}</h1>
-            <p class="text-muted-foreground text-sm mt-2">{{ __("Share Elevkår's events and plans.") }}</p>
+            <p class="text-muted-foreground text-sm mt-2">{{ __("Share SSIS events and plans.") }}</p>
             <x-card
                 x-data
                 is="button"
