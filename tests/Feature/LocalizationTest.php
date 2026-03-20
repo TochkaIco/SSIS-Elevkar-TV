@@ -1,15 +1,15 @@
 <?php
 
 test('the homepage is in Swedish', function () {
-    app()->setLocale('sv');
+    $this->app->setLocale('sv');
     $response = $this->get('/');
 
     $response->assertStatus(200);
-    $response->assertSee('Elevkårens aktuella evenemang');
+    $response->assertSee('SSIS aktuella evenemang');
 });
 
 test('the login page is in Swedish', function () {
-    app()->setLocale('sv');
+    $this->app->setLocale('sv');
     $response = $this->get('/login');
 
     $response->assertStatus(200);

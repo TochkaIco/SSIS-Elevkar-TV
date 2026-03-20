@@ -4,33 +4,55 @@
             <h1 class="text-3xl font-bold">{{ __("Current SSIS Events") }}</h1>
         </header>
         <div class="text-muted-foreground">
-            <div class="grid md:grid-cols-2 gap-6">
-                @forelse($events as $event)
-                    <x-card href="{{ route('event.show', $event) }}">
-                        @if($event->image_path)
-                            <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
-                                <img
-                                    src="{{ asset('storage/' . $event->image_path) }}"
-                                    alt="{{ __('Image') }}"
-                                    class="w-full h-auto max-h-60 object-cover mb-2"
-                                    decoding="sync"
-                                >
-                            </div>
-                        @endif
-
-                        <h3 class="text-foreground text-lg">{{ $event->title }}</h3>
-                        <p class="mt-2 line-clamp-2">{!! $event->formattedDescription !!}</p>
-                        <x-divider />
-                        <div class="flex gap-x-3 items-center text-muted-foreground text-sm">
-                            <span>{{ __('Created') }} {{ $event->created_at->diffForHumans() }}</span>
+            @if($events && $events->count()===1)
+                <x-card href="{{ route('event.show', $events[0]) }}" class="max-w-4xl mx-auto items-center">
+                    @if($events[0]->image_path)
+                        <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
+                            <img
+                                src="{{ asset('storage/' . $events[0]->image_path) }}"
+                                alt="{{ __('Image') }}"
+                                class="w-full h-auto max-h-80 object-cover mb-2"
+                                decoding="sync"
+                            >
                         </div>
-                    </x-card>
-                @empty
-                    <x-card>
-                        <p>{{ __('No scheduled events at this time') }}</p>
-                    </x-card>
-                @endforelse
-            </div>
+                    @endif
+
+                    <h3 class="text-foreground text-lg">{{ $events[0]->title }}</h3>
+                    <p class="mt-2 line-clamp-2">{!! $events[0]->formattedDescription !!}</p>
+                    <x-divider />
+                    <div class="flex gap-x-3 items-center text-muted-foreground text-sm">
+                        <span>{{ __('Created') }} {{ $events[0]->created_at->diffForHumans() }}</span>
+                    </div>
+                </x-card>
+            @else
+                <div class="grid md:grid-cols-2 gap-6">
+                    @forelse($events as $event)
+                        <x-card href="{{ route('event.show', $event) }}">
+                            @if($event->image_path)
+                                <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
+                                    <img
+                                        src="{{ asset('storage/' . $event->image_path) }}"
+                                        alt="{{ __('Image') }}"
+                                        class="w-full h-auto max-h-60 object-cover mb-2"
+                                        decoding="sync"
+                                    >
+                                </div>
+                            @endif
+
+                            <h3 class="text-foreground text-lg">{{ $event->title }}</h3>
+                            <p class="mt-2 line-clamp-2">{!! $event->formattedDescription !!}</p>
+                            <x-divider />
+                            <div class="flex gap-x-3 items-center text-muted-foreground text-sm">
+                                <span>{{ __('Created') }} {{ $event->created_at->diffForHumans() }}</span>
+                            </div>
+                        </x-card>
+                    @empty
+                        <x-card>
+                            <p>{{ __('No scheduled events at this time') }}</p>
+                        </x-card>
+                    @endforelse
+                </div>
+            @endif
         </div>
     </div>
 </x-layout.public-layout>
