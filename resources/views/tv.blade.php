@@ -1,8 +1,14 @@
 <x-layout.public-layout title="{{ __('TV Page') }}">
     <div>
-        <header class="py-8 md:py-12">
-            <h1 class="text-3xl font-bold">{{ __("Current SSIS Events") }}</h1>
-        </header>
+        @if($events && $events->count()===1)
+            <header class="py-8 md:py-12 flex flex-col items-center text-center mx-auto">
+                <h1 class="text-3xl font-bold">{{ __("Current SSIS Events") }}</h1>
+            </header>
+        @else
+            <header class="py-8 md:py-12">
+                <h1 class="text-3xl font-bold">{{ __("Current SSIS Events") }}</h1>
+            </header>
+        @endif
         <div class="text-muted-foreground">
             @if($events && $events->count()===1)
                 <x-card href="{{ route('event.show', $events[0]) }}" class="max-w-4xl mx-auto items-center">
