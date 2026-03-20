@@ -9,7 +9,12 @@
                     <x-card href="{{ route('event.show', $event) }}">
                         @if($event->image_path)
                             <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
-                                <img src="{{ asset('storage/' . $event->image_path) }}" alt="{{ __('Image') }}" class="w-full h-auto max-h-60 object-cover mb-2">
+                                <img
+                                    src="{{ asset('storage/' . $event->image_path) }}"
+                                    alt="{{ __('Image') }}"
+                                    class="w-full h-auto max-h-60 object-cover mb-2"
+                                    decoding="sync"
+                                >
                             </div>
                         @endif
 

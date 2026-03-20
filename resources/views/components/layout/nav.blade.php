@@ -2,7 +2,7 @@
 <nav class="border-b border-border px-6">
     <div class="max-w-7xl mx-auto h-16 flex items-center justify-between">
         <a href="{{ route('events.index') }}" class="flex items-center justify-between gap-x-3">
-            <img src="/images/logo.png" alt="{{ __('Logo') }}" width="50" class="rounded-2xl">
+            <img src="/images/logo.png" alt="{{ __('Logo') }}" width="50" class="rounded-2xl" decoding="sync">
             <h3 class="font-bold text-3xl">SSIS Elevkår</h3>
         </a>
 
