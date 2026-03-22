@@ -1,7 +1,7 @@
 # Elevkår TV
 
 Idea: A website with an index page and an admin panel. The index page is what will be shown on a tv screen for some information.
-The admin panel will let admins configure the layout, text and images on the index page. Admins will at the very least get to select between 2-3 different layouts.
+The admin panel will let admins configure the layout, text and images on the index page.
 
 ## Current TODO
 - [x] create initial views and components
@@ -12,4 +12,4 @@ The admin panel will let admins configure the layout, text and images on the ind
 - [x] implement the general logic
 - [x] translate to Swedish
 - [ ] done with browser/feature and unit tests
-- [ ] setup a pipeline
+- [x] setup a pipeline
