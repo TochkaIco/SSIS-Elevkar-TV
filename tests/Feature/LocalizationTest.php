@@ -1,11 +1,7 @@
 <?php
 
-use Tests\TestCase;
-
-uses(TestCase::class);
-
 test('the homepage is in Swedish', function () {
-    $this->app->setLocale('sv');
+    $this->app['config']->set('app.locale', 'sv');
     $response = $this->get('/');
 
     $response->assertStatus(200);
@@ -13,7 +9,7 @@ test('the homepage is in Swedish', function () {
 });
 
 test('the login page is in Swedish', function () {
-    $this->app->setLocale('sv');
+    $this->app['config']->set('app.locale', 'sv');
     $response = $this->get('/login');
 
     $response->assertStatus(200);
