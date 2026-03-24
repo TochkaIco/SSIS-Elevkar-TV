@@ -2,16 +2,16 @@
     <div>
         @if($events && $events->count()===1)
             <header class="py-8 md:py-12 flex flex-col items-center text-center mx-auto">
-                <h1 class="text-3xl font-bold">{{ __("Current SSIS Events") }}</h1>
+                <h1 class="text-4xl font-bold">{{ __("Current SSIS Events") }}</h1>
             </header>
         @else
             <header class="py-8 md:py-12">
-                <h1 class="text-3xl font-bold">{{ __("Current SSIS Events") }}</h1>
+                <h1 class="text-4xl font-bold">{{ __("Current SSIS Events") }}</h1>
             </header>
         @endif
         <div class="text-muted-foreground">
             @if($events && $events->count()===1)
-                <x-card href="{{ route('event.show', $events[0]) }}" class="max-w-4xl mx-auto items-center">
+                <x-card href="{{ route('event.show', $events[0]) }}" class="max-w-5xl mx-auto items-center">
                     @if($events[0]->image_path)
                         <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
                             @push('preloads')
@@ -25,7 +25,7 @@
                         </div>
                     @endif
 
-                    <h3 class="text-foreground text-lg">{{ $events[0]->title }}</h3>
+                    <h3 class="text-foreground text-xl">{{ $events[0]->title }}</h3>
                     <p class="mt-2 line-clamp-2">{!! $events[0]->formattedDescription !!}</p>
                     <x-divider />
                     <div class="flex gap-x-3 items-center text-muted-foreground text-sm">
@@ -53,7 +53,7 @@
                                 </div>
                             @endif
 
-                            <h3 class="text-foreground text-lg">{{ $event->title }}</h3>
+                            <h3 class="text-foreground text-xl">{{ $event->title }}</h3>
                             <p class="mt-2 line-clamp-2">{!! $event->formattedDescription !!}</p>
                             <x-divider />
                             <div class="flex gap-x-3 items-center text-muted-foreground text-sm">
@@ -62,7 +62,7 @@
                         </x-card>
                     @empty
                         <x-card>
-                            <p>{{ __('No scheduled events at this time') }}</p>
+                            <h2 class="text-xl">{{ __('No scheduled events at this time') }}</h2>
                         </x-card>
                     @endforelse
                 </div>

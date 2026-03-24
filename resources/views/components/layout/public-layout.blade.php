@@ -9,12 +9,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-background text-foreground">
-<x-layout.nav type="no-login" />
+<x-layout.public-nav />
 
-<main {{ $attributes->merge(['class' => 'max-w-7xl mx-auto px-6 py-10']) }}>
+<main {{ $attributes->merge(['class' => 'max-w-9xl mx-auto px-6 py-10']) }}>
     {{ $slot }}
 </main>
 
-<x-signature/>
+<x-signature />
 </body>
 </html>
