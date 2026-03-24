@@ -6,11 +6,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Socialite;
+use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\User as GoogleUser;
 
 class SessionsUserController extends Controller
 {
-    //
     public function create()
     {
         return view('auth.login');
@@ -19,6 +19,7 @@ class SessionsUserController extends Controller
     public function store()
     {
         try {
+            /** @var GoogleUser $googleUser */
             $googleUser = Socialite::driver('google')->user();
         } catch (\Exception $e) {
             return redirect('/login')->with('error', 'failed to connect to fetch your data from Google');

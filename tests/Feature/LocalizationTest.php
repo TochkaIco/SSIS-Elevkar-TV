@@ -1,5 +1,9 @@
 <?php
 
+use Tests\TestCase;
+
+uses(TestCase::class);
+
 test('the homepage is in Swedish', function () {
     $this->app->setLocale('sv');
     $response = $this->get('/');
