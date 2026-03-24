@@ -14,6 +14,9 @@
                 <x-card href="{{ route('event.show', $events[0]) }}" class="max-w-4xl mx-auto items-center">
                     @if($events[0]->image_path)
                         <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
+                            @push('preloads')
+                                <link rel="preload" as="image" href="{{ asset('storage/' . $events[0]->image_path) }}">
+                            @endpush
                             <img
                                 src="{{ asset('storage/' . $events[0]->image_path) }}"
                                 alt="{{ __('Image') }}"
@@ -36,6 +39,13 @@
                         <x-card href="{{ route('event.show', $event) }}">
                             @if($event->image_path)
                                 <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
+                                    @push('preloads')
+                                        @foreach($events as $event)
+                                            @if($event->image_path)
+                                                <link rel="preload" as="image" href="{{ asset('storage/' . $event->image_path) }}">
+                                            @endif
+                                        @endforeach
+                                    @endpush
                                     <img
                                         src="{{ asset('storage/' . $event->image_path) }}"
                                         alt="{{ __('Image') }}"

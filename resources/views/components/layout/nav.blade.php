@@ -2,7 +2,10 @@
 <nav class="border-b border-border px-6">
     <div class="max-w-7xl mx-auto h-16 flex items-center justify-between">
         <a href="{{ route('events.index') }}" class="flex items-center justify-between gap-x-3">
-            <img src="/images/logo.png" alt="{{ __('Logo') }}" width="50" class="rounded-2xl" decoding="sync">
+            @push('preloads')
+                <link rel="preload" as="image" href="{{ asset('images/logo.png') }}">
+            @endpush
+            <img src="{{ asset('images/logo.png') }}" alt="{{ __('Logo') }}" width="50" class="rounded-2xl" decoding="sync">
             <h3 class="font-bold text-3xl">SSIS Elevkår</h3>
         </a>
 
