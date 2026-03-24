@@ -5,7 +5,7 @@
             @push('preloads')
                 <link rel="preload" as="image" href="{{ asset('images/logo.png') }}">
             @endpush
-            <img src="{{ asset('images/logo.png') }}" alt="{{ __('Logo') }}" width="50" class="rounded-2xl" decoding="sync">
+            <img src="{{ asset('images/logo.png') }}" alt="{{ __('Logo') }}" width="50" class="rounded-2xl">
             <h3 class="font-bold text-3xl">SSIS Elevkår</h3>
         </a>
 

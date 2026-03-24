@@ -21,7 +21,6 @@
                                 src="{{ asset('storage/' . $events[0]->image_path) }}"
                                 alt="{{ __('Image') }}"
                                 class="w-full h-auto max-h-80 object-cover mb-2"
-                                decoding="sync"
                             >
                         </div>
                     @endif
@@ -50,7 +49,6 @@
                                         src="{{ asset('storage/' . $event->image_path) }}"
                                         alt="{{ __('Image') }}"
                                         class="w-full h-auto max-h-60 object-cover mb-2"
-                                        decoding="sync"
                                     >
                                 </div>
                             @endif
